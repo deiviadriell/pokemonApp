@@ -41,8 +41,6 @@ export class ListComponent implements OnInit {
     this.search = search;
   }
   accion(pokemon?: Pokemon){
-    console.log(pokemon);
-    
     const modalRef =this.modal.open(MantenimientoComponent,
         {size: 'lg'}
       );

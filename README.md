@@ -14,7 +14,7 @@ Node Version 14.15.4
 ## Objetivo
 
 Caso Práctico Proceso de Selección Angular
-Permite
+Permite <br/>
 <ul>
   <li>Guardar eliminar y editar los pokemon</li>
   <li>Crear nuevos pokemon</li>

@@ -4,17 +4,15 @@ import { Subject } from 'rxjs';
 import { Pokemon } from 'src/app/shared/interfaces/pokemon.interface';
 import { PokemonService } from 'src/app/shared/services/pokemon.service';
 import { MantenimientoComponent } from '../mantenimiento/mantenimiento.component';
-
-
 import Swal from 'sweetalert2'
 import { NgxSpinnerService } from 'ngx-spinner';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
   public search: string = '';
   pokemonList: Pokemon[] = [];
   destroy$: Subject<boolean> = new Subject<boolean>()
@@ -54,8 +52,7 @@ export class ListComponent implements OnInit {
       else if(respuesta == false){
         message = 'Problemas en servidor.';
       }
-         console.log(respuesta);
-          
+       
       if(respuesta!== null) {
         Swal.fire({
           title: 'Información!',
@@ -73,11 +70,8 @@ export class ListComponent implements OnInit {
       icon: 'info',
       confirmButtonText: 'Confirmar'
     }).then(resolve => {
-      console.log(resolve);
-      
       if (!resolve.isConfirmed) return
-      this.pokemonService.eliminarPokemon(pokemon.id).subscribe(resultado => {
-        
+      this.pokemonService.eliminarPokemon(pokemon.id).subscribe(resultado => {        
         this.obtenerPokemons();
         Swal.fire({
           title: 'Información!',

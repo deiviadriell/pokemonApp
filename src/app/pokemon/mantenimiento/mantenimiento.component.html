@@ -1,0 +1,99 @@
+<div class="modal-content">
+    <form class="mt-4" [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="modal-header">
+       <h5 class="modal-title">
+          {{tituloModal}}
+       </h5>
+    </div>
+    <div class="modal-body">
+       <div class="row">
+          <div class="col-sm-6">
+             <div class="form-group">
+                <div class="form-group">
+                   <label>Nombre*</label>
+                   <input formControlName="name" type="text" class="form-control" placeholder="Nombre del Pokemon">
+                   <span *ngIf="campoEsValido('name')" class="form-text text-danger">
+                   El nombre es obligatorio.
+                   </span>
+                </div>
+                <div class="form-group">
+                   <label>Imagen*</label>
+                   <input type="text" class="form-control" formControlName="image" placeholder="Url Imagen">
+                   <span *ngIf="campoEsValido('image')" class="form-text text-danger">
+                   El url de la imagen es obligatorio
+                   </span>
+                </div>
+                <div class="form-group">
+                   <label>Tipo*</label>
+                   <ng-select [items]="tipos" 
+                      formControlName="type"
+                      ></ng-select>
+                   <span *ngIf="campoEsValido('idDetalleTipoTratamiento')" class="form-text text-danger">
+                   Debe de seleccionar un tratamiento
+                   </span>                       
+                </div>
+             </div>
+          </div>
+          <div class="col-sm-6">
+             <div class="form-group">
+                <label >Ataque</label> 
+                <div class="row">
+                    <div class="col-sm-1">
+                        <span>0</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="range" class="form-range" formControlName="attack" oninput="this.nextElementSibling.value = this.value">                                    
+                    </div>
+                    <div class="col-sm-1">
+                        <output>{{form.controls['attack'].value}}</output>           
+                    </div>
+    
+                </div>               
+               
+                <span *ngIf="campoEsValido('attack')" class="form-text text-danger">
+                El campo email no tiene el formato de correo.
+                </span>
+             </div>
+             <div class="form-group">
+                <label >Defensa</label>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <span>0</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="range" class="form-range" oninput="this.nextElementSibling.value = this.value"formControlName="defense">  
+                    </div>
+                    <div class="col-sm-1">
+                        <output>{{form.controls['defense'].value}}</output>           
+                    </div>
+    
+                </div>               
+               
+                
+                  
+                <span *ngIf="campoEsValido('defense')" class="form-text text-danger">
+                El campo email no tiene el formato de correo.
+                </span>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="modal-footer pa">
+        <button 
+                mat-raised-button  
+                color="primary"
+                [disabled]="!form.valid" type="submit">
+            <mat-icon aria-hidden="false">save</mat-icon>
+            Guardar
+          </button> 
+          &nbsp;
+          <button   mat-raised-button  
+                    color="primary"
+                    (click)="cancel()"
+                    type="button">
+            <mat-icon aria-hidden="false">cancel</mat-icon>
+            Cancelar
+          </button>    
+    </div>
+    </form>
+ </div>
